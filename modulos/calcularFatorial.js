@@ -1,19 +1,26 @@
-const calcularFatorial=function(valorFatorial){
-    let fatorial=valorFatorial
-    let resultado=fatorial
-    if(fatorial==0)
-        console.log('ERRO: Não existe fatorial de 0.') 
-    else if(fatorial==1)
-        console.log('ERRO: O valor precisa ser maior que 1.')
-    else if(isNaN(fatorial))
-        console.log('ERRO: É obrigatório a entrada apenas de valores numéricos.')
-    else if(fatorial=='')
-        console.log('ERRO: É obrigatório a digitação do valoor.')
-    else{
-        for(let contador=1;contador<fatorial;contador++)
-            resultado=resultado*contador
+const calcularFatorial = function (valorFatorial) {
+    let fatorial = parseInt(valorFatorial);
+
+    if (isNaN(fatorial) || fatorial < 0) {
+        return 'ERRO: Valor inválido para cálculo de fatorial.';
+    } else if (fatorial === 0 || fatorial === 1) {
+        return `Fatorial de ${fatorial} é 1`;
+    } else {
+        let resultado = 1;
+        let fatorialString = `Fatorial de ${fatorial} é ${fatorial}`;
+
+        for (let contador = fatorial; contador >= 2; contador--) {
+            resultado *= contador;
+            fatorialString += `x${contador - 1}`;
+        }
+
+        fatorialString += ` = ${resultado}`;
+        return fatorialString;
     }
-    let print='RESULTADO: '+resultado
-    return print
+};
+
+const exibirResultado = function (valorFatorial) {
+    console.log(calcularFatorial(valorFatorial));
 }
-module.exports={calcularFatorial}
+
+module.exports = { calcularFatorial, exibirResultado };

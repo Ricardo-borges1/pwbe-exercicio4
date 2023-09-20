@@ -6,14 +6,14 @@
 *****************************************************/
 
 
-var calculoFatorial=require('./modulos/calcularFatorial')
-var readline=require('readline')
-var entradaDados=readline.createInterface({
+var calculoFatorial = require('./modulos/calcularFatorial');
+var readline = require('readline');
+var entradaDados = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-})
-entradaDados.question('Digite o valor: ',function(fatorialUsuario){
-    fatorial=fatorialUsuario
-    console.log(calculoFatorial.calcularFatorial(fatorial))
-    entradaDados.close()
-})
+});
+
+entradaDados.question('Digite o valor: ', function (fatorialUsuario) {
+    calculoFatorial.exibirResultado(fatorialUsuario);
+    entradaDados.close();
+});
